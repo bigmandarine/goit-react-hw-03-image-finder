@@ -1,5 +1,6 @@
 import { ColorRing } from 'react-loader-spinner';
 import { Loader } from './Loader.styled';
+
 export const LoaderRing = () => {
   return (
     <Loader>

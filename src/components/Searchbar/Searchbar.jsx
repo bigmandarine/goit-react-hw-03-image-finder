@@ -2,6 +2,7 @@ import { Component } from 'react';
 import { Form, InputWrapper, Button, Input } from './Searchbar.styled';
 import { BiSearch } from 'react-icons/bi';
 import PropTypes from 'prop-types';
+import { toast } from 'react-toastify';
 
 class Searchbar extends Component {
   state = {
@@ -14,7 +15,9 @@ class Searchbar extends Component {
   onSubmit = evt => {
     evt.preventDefault();
     if (this.state.value.length <= 0) {
-      return alert('Not found');
+      toast.error('Please enter search name!', {
+        autoClose: 1500,
+      });
     }
     this.props.onSubmit(this.state.value);
   };

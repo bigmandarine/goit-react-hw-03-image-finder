@@ -18,5 +18,6 @@ export const ButtonWrapper = styled.div`
     :hover {
       background-color: #4354b0;
     }
+    outline: none;
   }
 `;

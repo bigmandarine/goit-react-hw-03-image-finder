@@ -16,10 +16,11 @@ export const ModalWindow = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px 0;
+  transform: 250ms;
+`;
 
-  img {
-    width: 85vw;
-    height: 95vh;
-    object-fit: cover;
-  }
+export const Img = styled.img`
+  width: 85vw;
+  height: 95vh;
+  object-fit: cover;
 `;

@@ -4,16 +4,16 @@ import { fetchImages } from './api/api';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { ButtonLoadMore } from './Button/ButtonLoad';
 import { LoaderRing } from './Loader/Loader';
-import { Modal } from './Modal/Modal';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import Modal from './Modal/Modal';
 class App extends Component {
   state = {
     galarry: [],
-    id: '',
     page: 1,
-    webformatURL: '',
     largeImageURL: '',
     searchName: '',
-    status: 'idle',
+    status: '',
     modal: false,
   };
 
@@ -30,14 +30,19 @@ class App extends Component {
       }
 
       try {
-        const imageList = await fetchImages(newSearch, 42);
+        const imageList = await fetchImages(newSearch, nextPage);
         this.setState(prevState => ({
           galarry: [...prevState.galarry, ...imageList],
           status: 'resolved',
         }));
-        if (imageList.length === 0) {
-        }
-      } catch (error) {}
+      } catch (error) {
+        toast.error('Ops, something go wrong. Please reload the page!', {
+          autoClose: 2000,
+        });
+        this.setState({
+          status: 'rejected',
+        });
+      }
     }
   }
 
@@ -57,9 +62,7 @@ class App extends Component {
     this.setState({ modal: !this.state.modal, largeImageURL: largeImage });
   };
   onClickBackDrop = e => {
-    if (e.currentTarget === e.target) {
-      this.setState({ modal: !this.state.modal, largeImageURL: '' });
-    }
+    this.setState({ modal: !this.state.modal, largeImageURL: '' });
   };
 
   render() {
@@ -76,6 +79,18 @@ class App extends Component {
         {modal && (
           <Modal image={largeImageURL} onClick={this.onClickBackDrop} />
         )}
+        <ToastContainer
+          position="top-right"
+          autoClose={2000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </div>
     );
   }

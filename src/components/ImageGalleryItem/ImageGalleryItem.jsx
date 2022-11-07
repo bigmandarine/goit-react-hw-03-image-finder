@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
+import { Item } from './ImageGallery.styled';
 export const ImageGalleryItem = ({ largeImageURL, webformatURL, onClick }) => {
   return (
-    <li onClick={() => onClick(largeImageURL)}>
+    <Item onClick={() => onClick(largeImageURL)}>
       <img src={webformatURL} alt=""></img>
-    </li>
+    </Item>
   );
 };
 

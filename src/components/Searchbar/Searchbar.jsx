@@ -1,7 +1,9 @@
 import { Component } from 'react';
-import { Search } from './Searchbar.styled';
-import { getApi } from 'components/api/api';
-class SearchInput extends Component {
+import { Form, InputWrapper, Button, Input } from './Searchbar.styled';
+import { BiSearch } from 'react-icons/bi';
+import PropTypes from 'prop-types';
+
+class Searchbar extends Component {
   state = {
     value: '',
   };
@@ -19,14 +21,30 @@ class SearchInput extends Component {
   render() {
     const { value } = this.state;
     return (
-      <form onSubmit={this.onSubmit}>
-        <Search>
-          <button type="submit">find</button>
-          <input type="text" onChange={this.handleChange} value={value}></input>
-        </Search>
-      </form>
+      <header>
+        <Form onSubmit={this.onSubmit}>
+          <InputWrapper>
+            <Button type="submit">
+              <BiSearch size={25} />
+            </Button>
+            <Input
+              className="input"
+              type="text"
+              autoComplete="off"
+              onChange={this.handleChange}
+              value={value}
+              placeholder="Search images and photos"
+              autoFocus
+            ></Input>
+          </InputWrapper>
+        </Form>
+      </header>
     );
   }
 }
 
-export default SearchInput;
+export default Searchbar;
+
+Searchbar.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};

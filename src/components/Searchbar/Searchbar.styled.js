@@ -1,9 +1,11 @@
 import styled from 'styled-components';
-export const Form = styled.form`
+export const Header = styled.header`
   z-index: 500;
   position: sticky;
   top: 0;
   left: 0;
+`;
+export const Form = styled.form`
   display: flex;
   justify-content: center;
   background-color: #4354b0;

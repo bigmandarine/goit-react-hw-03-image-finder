@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import { Form, InputWrapper, Button, Input } from './Searchbar.styled';
+import { Form, InputWrapper, Button, Input, Header } from './Searchbar.styled';
 import { BiSearch } from 'react-icons/bi';
 import PropTypes from 'prop-types';
 import { toast } from 'react-toastify';
@@ -25,7 +25,7 @@ class Searchbar extends Component {
   render() {
     const { value } = this.state;
     return (
-      <header>
+      <Header>
         <Form onSubmit={this.onSubmit}>
           <InputWrapper>
             <Button type="submit">
@@ -42,7 +42,7 @@ class Searchbar extends Component {
             ></Input>
           </InputWrapper>
         </Form>
-      </header>
+      </Header>
     );
   }
 }

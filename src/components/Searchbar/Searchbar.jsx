@@ -18,8 +18,9 @@ class Searchbar extends Component {
       toast.error('Please enter search name!', {
         autoClose: 1500,
       });
+    } else {
+      this.props.onSubmit(this.state.value);
     }
-    this.props.onSubmit(this.state.value);
   };
   render() {
     const { value } = this.state;

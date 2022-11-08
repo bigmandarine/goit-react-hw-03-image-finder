@@ -6,11 +6,3 @@ export const List = styled.ul`
   overflow: hidden;
   padding: 0px;
 `;
-
-// display: grid;
-//   max-width: calc(100vw - 48px);
-//   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-//   gap: 16px;
-//   margin: 16px auto 0px;
-//   padding: 0px;
-//   list-style: none;

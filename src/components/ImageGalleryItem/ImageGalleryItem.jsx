@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Item } from './ImageGallery.styled';
+import { Item } from './ImageGalleryItem.styled';
 export const ImageGalleryItem = ({ largeImageURL, webformatURL, onClick }) => {
   return (
     <Item onClick={() => onClick(largeImageURL)}>

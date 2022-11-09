@@ -25,9 +25,6 @@ class App extends Component {
 
     if (prevSearch !== newSearch || prevPage !== nextPage) {
       this.setState({ status: 'pending' });
-      if (prevSearch !== newSearch) {
-        this.setState({ page: 1, galarry: [] });
-      }
 
       try {
         const imageList = await fetchImages(newSearch, nextPage);
@@ -47,7 +44,7 @@ class App extends Component {
   }
 
   onSubmit = searchPicture => {
-    this.setState({ searchName: searchPicture, page: 1 });
+    this.setState({ searchName: searchPicture, page: 1, galarry: [] });
   };
 
   onClickLoadMore = () => {
@@ -58,7 +55,7 @@ class App extends Component {
   onClickToggleModal = largeImage => {
     this.setState({ modal: !this.state.modal, largeImageURL: largeImage });
   };
-  onClickBackDrop = e => {
+  onClickBackDrop = () => {
     this.setState({ modal: !this.state.modal, largeImageURL: '' });
   };
 

@@ -50,9 +50,6 @@ class App extends Component {
     this.setState({ searchName: searchPicture, page: 1 });
   };
 
-  resetSearch = () => {
-    this.setState({ searchName: null });
-  };
   onClickLoadMore = () => {
     this.setState(prevState => ({
       page: prevState.page + 1,
